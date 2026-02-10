@@ -31,10 +31,14 @@
                 "input": "public"
               }
             ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/select2/dist/js/select2.min.js"
+            ],
             "styles": [
+              "node_modules/select2/dist/css/select2.min.css",
               "src/styles.scss"
             ],
-            "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -103,5 +107,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "5ea5ede0-becc-44b5-bc4d-e4678d220aee"
   }
 }

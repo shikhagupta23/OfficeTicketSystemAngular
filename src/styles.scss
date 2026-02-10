@@ -1,1 +1,47 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;   /* ❌ no body scroll */
+  font-family: 'Inter', sans-serif;
+}
+
+/* Base Select2 container */
+.select2-container {
+  // width: 100% !important;
+  font-size: 14px;
+}
+
+/* The visible select box */
+.select2-container .select2-selection--single {
+  height: 44px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #d0d5dd;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+/* Selected text */
+.select2-selection__rendered {
+  color: #101828;
+  line-height: 24px !important;
+  padding-left: 0 !important;
+}
+
+/* Arrow alignment */
+.select2-selection__arrow {
+  height: 100%;
+  right: 8px;
+}
+
+/* Placeholder text */
+.select2-selection__placeholder {
+  color: #98a2b3;
+}

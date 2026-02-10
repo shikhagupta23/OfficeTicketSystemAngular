@@ -1,0 +1,145 @@
+<div class="ticket-page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <div>
+      <h2>List of Tickets</h2>
+    </div>
+    <div>
+    <button class="raise-btn" (click)="openModal()" *ngIf="loggedInUserRole === 'Employee'">+ Raise Ticket</button>
+    </div>
+  </div>
+
+  <div class="search-wrapper">
+    <div class="search-bar compact">
+      <input
+        type="text"
+        placeholder="Search tickets..."
+        [(ngModel)]="searchText"
+        (input)="onSearch()" />
+    </div>
+  </div>
+
+  <!-- Loader Overlay -->
+  <div class="loader-overlay" *ngIf="loading">
+    <div class="loader-box">
+      <div class="spinner"></div>
+      <p>Loading tickets...</p>
+    </div>
+  </div>
+
+  <!-- Ticket Cards -->
+<div class="ticket-cards">
+  <div class="ticket-card" *ngFor="let ticket of tickets">
+    <div class="card-header">
+      <h4>{{ ticket.title }}</h4>
+      <span class="status" [ngClass]="getStatusClass(ticket.status)">
+        {{ getStatusText(ticket.status) }}
+      </span>
+    </div>
+
+    <p class="meta">
+      <span class="priority-badge" [ngClass]="getPriorityClass(ticket.priority)">
+        {{ getPriorityText(ticket.priority) }}
+      </span>
+      · {{ ticket.createdDate | date:'dd MMM yyyy' }}
+    </p>
+
+    <p class="desc">{{ ticket.description }}</p>
+
+    <div class="card-footer">
+      <span>#{{ ticket.id }}</span>
+    </div>
+
+    <!-- SuperAdmin assign button & dropdown -->
+<!-- SuperAdmin assign button & dropdown -->
+<div class="assign-wrapper" *ngIf="loggedInUserRole === 'SuperAdmin' && ticket.status === 1">
+  <!-- Assign button -->
+  <button class="assign-btn" (click)="openAssignDropdown(ticket.id)">
+    Assign To
+  </button>
+
+  <!-- Dropdown and Save -->
+  <div *ngIf="assigningTicketId === ticket.id" class="assign-dropdown-wrapper">
+    <select [(ngModel)]="selectedAdminId" appSelect2>
+      <option value="">Select Admin</option>
+      <option *ngFor="let admin of admins" [value]="admin.id">{{ admin.userName }}</option>
+    </select>
+
+    <button 
+      class="save-btn" 
+      *ngIf="selectedAdminId" 
+      (click)="assignTicket(ticket.id)">
+      Save
+    </button>
+  </div>
+</div>
+<!-- Admin resolves ticket if status is 2 -->
+<div class="resolve-wrapper" *ngIf="loggedInUserRole === 'Admin' && ticket.status === 2">
+  <button class="resolve-btn" (click)="resolveTicket(ticket.id)">
+    Resolved
+  </button>
+</div>
+
+  </div>
+</div>
+
+  <div class="no-data" *ngIf="!loading && tickets.length === 0">
+    <p>No tickets found 🚫</p>
+  </div>
+
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      ‹
+    </button>
+
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      (click)="changePage(i + 1)"
+      [class.active]="currentPage === i + 1">
+      {{ i + 1 }}
+    </button>
+
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      ›
+    </button>
+  </div>
+
+</div>
+
+<!-- POPUP MODAL -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
+    <h3>Raise Ticket</h3>
+
+    <form [formGroup]="ticketForm" (ngSubmit)="submitTicket()">
+
+      <input type="text" placeholder="Title" formControlName="title" />
+
+      <div class="row" style="margin-top: 12px;">
+        <select formControlName="category" appSelect2>
+          <option value="">Category</option>
+          <option>IT</option>
+          <option>HR</option>
+        </select>
+
+        <select formControlName="priority" appSelect2>
+          <option value="">Priority</option>
+          <option>Low</option>
+          <option>Medium</option>
+          <option>High</option>
+        </select>
+      </div>
+
+      <textarea rows="3" placeholder="Description"
+        formControlName="description"></textarea>
+
+      <div class="actions">
+        <button type="button" class="cancel" (click)="closeModal()">Cancel</button>
+        <button type="submit" [disabled]="ticketForm.invalid">Submit</button>
+      </div>
+
+    </form>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<aside class="sidebar" [class.closed]="!isOpen">
+  <ul>
+    <li
+      routerLink="/employee/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">
+      <span class="material-icons icon">dashboard</span>
+      <span class="text">Dashboard</span>
+    </li>
+
+    <li
+      routerLink="/employee/raise-ticket"
+      routerLinkActive="active">
+      <span class="material-icons icon">confirmation_number</span>
+      <span class="text">Manage Ticket</span>
+    </li>
+    <li class="logout" (click)="logout()">      
+      <span class="material-icons icon">logout</span>
+      <span class="text">Logout</span></li>
+  </ul>
+</aside>

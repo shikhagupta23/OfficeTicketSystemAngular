@@ -1,0 +1,13 @@
+<header class="header">
+  <div class="left" (click)="onToggle()">
+    ☰
+    <span>Office Ticket System</span>
+  </div>
+
+  <div class="right">
+    <div class="user-info" *ngIf="userName || userRole">
+      <span class="username" *ngIf="userName">{{ userName }}</span>
+      <span class="role" *ngIf="userRole">{{ userRole }}</span>
+    </div>
+  </div>
+</header>

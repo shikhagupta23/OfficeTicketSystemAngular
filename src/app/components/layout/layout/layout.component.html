@@ -1,0 +1,17 @@
+<div class="layout">
+
+  <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+
+  <div class="content-wrapper">
+    <div class="sidebar-wrapper" [class.collapsed]="!isSidebarOpen">
+      <app-sidebar></app-sidebar>
+    </div>
+
+    <main class="main-content" [class.expanded]="!isSidebarOpen">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+
+  <app-footer></app-footer>
+
+</div>
