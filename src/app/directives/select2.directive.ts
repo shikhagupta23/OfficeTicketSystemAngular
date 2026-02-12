@@ -49,7 +49,8 @@ export class Select2Directive
       placeholder: this.placeholder,
       allowClear: true,
       dropdownAutoWidth: true,
-      dropdownParent: $('body')
+      dropdownParent: $('body'),
+      minimumResultsForSearch: 0
     });
 
     // ✅ Handle change
