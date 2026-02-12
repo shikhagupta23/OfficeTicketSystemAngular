@@ -399,7 +399,7 @@ html, body {
 
 /* Dropdown + Save wrapper */
 .assign-dropdown-wrapper {
-  display: flex;
+  display: inline-flex;
   gap: 8px;
   margin-top: 5px;
   align-items: center;
@@ -429,6 +429,11 @@ html, body {
   .save-btn.right {
   white-space: nowrap;
 }
+}
+
+.assign-dropdown-wrapper .select2-container {
+  min-width: 220px !important;
+  max-width: 260px !important;
 }
 
 .resolve-wrapper {
