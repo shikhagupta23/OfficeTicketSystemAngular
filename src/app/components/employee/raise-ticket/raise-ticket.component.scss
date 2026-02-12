@@ -399,10 +399,17 @@ html, body {
 
 /* Dropdown + Save wrapper */
 .assign-dropdown-wrapper {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   gap: 8px;
   margin-top: 5px;
   align-items: center;
+  width: fit-content;
+
+  .select2-container {
+    min-width: 220px !important;
+    max-width: 260px !important;
+  }
 
   select {
     padding: 4px 8px;
@@ -414,13 +421,14 @@ html, body {
   }
 
   .save-btn {
-    background-color: #1d4ed8;
+    background-color: #4f46e5;
     color: #fff;
     border: none;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     font-size: 0.9rem;
+    align-self: flex-end; 
 
     &:hover {
       background-color: #1e7e34;
@@ -430,11 +438,6 @@ html, body {
     white-space: nowrap;
     margin-top: 8px;
   }
-}
-
-.assign-dropdown-wrapper .select2-container {
-  min-width: 220px !important;
-  max-width: 260px !important;
 }
 
 .resolve-wrapper {
