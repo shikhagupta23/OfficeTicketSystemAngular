@@ -410,7 +410,6 @@ html, body {
     border: 1px solid #ccc;
     min-width: 140px;
     font-size: 0.9rem;
-    flex: 1;
   }
 
   .save-btn {
@@ -426,9 +425,6 @@ html, body {
       background-color: #1e7e34;
     }
   }
-  .save-btn.right {
-  white-space: nowrap;
-}
 }
 
 .resolve-wrapper {
