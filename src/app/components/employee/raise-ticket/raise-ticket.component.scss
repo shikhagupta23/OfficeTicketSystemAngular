@@ -399,7 +399,7 @@ html, body {
 
 /* Dropdown + Save wrapper */
 .assign-dropdown-wrapper {
-  display: inline-flex;
+  display: inline-block;
   gap: 8px;
   margin-top: 5px;
   align-items: center;
@@ -414,7 +414,7 @@ html, body {
   }
 
   .save-btn {
-    background-color: #28a745;
+    background-color: #1d4ed8;
     color: #fff;
     border: none;
     padding: 6px 12px;
@@ -427,8 +427,9 @@ html, body {
     }
   }
   .save-btn.right {
-  white-space: nowrap;
-}
+    white-space: nowrap;
+    margin-top: 8px;
+  }
 }
 
 .assign-dropdown-wrapper .select2-container {
