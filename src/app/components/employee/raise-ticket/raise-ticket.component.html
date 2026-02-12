@@ -61,8 +61,8 @@
 
   <!-- Dropdown and Save -->
   <div *ngIf="assigningTicketId === ticket.id" class="assign-dropdown-wrapper">
-    <select [(ngModel)]="selectedAdminId" appSelect2>
-      <option value="">Select Admin</option>
+    <select [(ngModel)]="selectedAdminId" appSelect2 placeholder="Select Admin">
+      <option value=""></option>
       <option *ngFor="let admin of admins" [value]="admin.id">{{ admin.userName }}</option>
     </select>
 
@@ -118,14 +118,14 @@
       <input type="text" placeholder="Title" formControlName="title" />
 
       <div class="row" style="margin-top: 12px;">
-        <select formControlName="category" appSelect2>
-          <option value="">Category</option>
+        <select formControlName="category" appSelect2 placeholder="Select Category">
+          <option value=""></option>
           <option>IT</option>
           <option>HR</option>
         </select>
 
-        <select formControlName="priority" appSelect2>
-          <option value="">Priority</option>
+        <select formControlName="priority" appSelect2 placeholder="Select Priority">
+          <option value=""></option>
           <option>Low</option>
           <option>Medium</option>
           <option>High</option>
