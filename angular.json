@@ -38,12 +38,7 @@
             "styles": [
               "node_modules/select2/dist/css/select2.min.css",
               "src/styles.scss"
-            ],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+            ]
           },
           "configurations": {
             "production": {
