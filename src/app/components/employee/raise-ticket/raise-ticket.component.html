@@ -20,76 +20,67 @@
     </div>
   </div>
 
-  <!-- Loader Overlay -->
-  <!-- <div class="loader-overlay" *ngIf="loading">
-    <div class="loader-box">
-      <div class="spinner"></div>
-      <p>Loading tickets...</p>
-    </div>
-  </div> -->
-
   <!-- Ticket Cards -->
 <div class="ticket-cards">
-  <div class="ticket-card" *ngFor="let ticket of tickets">
-    <div class="card-header">
-      <h4>{{ ticket.title }}</h4>
-      <span class="status" [ngClass]="getStatusClass(ticket.status)">
-        {{ getStatusText(ticket.status) }}
-      </span>
-    </div>
+    <ng-container *ngIf="tickets.length > 0; else noTickets">
+      <div class="ticket-card" *ngFor="let ticket of tickets">
+        <div class="card-header">
+          <h4 title="Title">{{ ticket.title }}</h4>
+          <span class="priority-badge" [ngClass]="getPriorityClass(ticket.priority)" title="Priority">
+            {{ getPriorityText(ticket.priority) }}
+          </span>  
+          <span class="status" [ngClass]="getStatusClass(ticket.status)" title="Status">
+            {{ getStatusText(ticket.status) }}
+          </span>
+        </div>
 
-    <p class="meta">
-      <span class="priority-badge" [ngClass]="getPriorityClass(ticket.priority)">
-        {{ getPriorityText(ticket.priority) }}
-      </span>
-      · {{ ticket.createdDate | date:'dd MMM yyyy' }}
-    </p>
+        <p class="desc" title="Description">{{ ticket.description }}</p>
 
-    <p class="desc">{{ ticket.description }}</p>
+        <div class="card-footer" title="Id">
+          <span>#{{ ticket.id }}</span>
+          <span title="Created Date">{{ ticket.createdDate | date:'dd MMM yyyy' }}</span>
+        </div>
 
-    <div class="card-footer">
-      <span>#{{ ticket.id }}</span>
-    </div>
-
+        <!-- SuperAdmin assign button & dropdown -->
     <!-- SuperAdmin assign button & dropdown -->
-<!-- SuperAdmin assign button & dropdown -->
-<div class="assign-wrapper" *ngIf="loggedInUserRole === 'SuperAdmin' && ticket.status === 1">
-  <!-- Assign button -->
-  <button class="assign-btn" (click)="openAssignDropdown(ticket.id)">
-    Assign To
-  </button>
+    <div class="assign-wrapper" *ngIf="loggedInUserRole === 'SuperAdmin' && ticket.status === 1">
+      <!-- Assign button -->
+      <button class="assign-btn" (click)="openAssignDropdown(ticket.id)">
+        Assign To
+      </button>
 
-  <!-- Dropdown and Save -->
-  <div *ngIf="assigningTicketId === ticket.id" class="assign-dropdown-wrapper">
-    <select [(ngModel)]="selectedAdminId" appSelect2 placeholder="Select Admin">
-      <option value=""></option>
-      <option *ngFor="let admin of admins" [value]="admin.id">{{ admin.userName }}</option>
-    </select>
+      <!-- Dropdown and Save -->
+      <div *ngIf="assigningTicketId === ticket.id" class="assign-dropdown-wrapper">
+        <select [(ngModel)]="selectedAdminId" appSelect2 placeholder="Select Admin">
+          <option value=""></option>
+          <option *ngFor="let admin of admins" [value]="admin.id">{{ admin.userName }}</option>
+        </select>
 
-    <button 
-      class="save-btn right" 
-      *ngIf="selectedAdminId" 
-      (click)="assignTicket(ticket.id)">
-      Save
-    </button>
-  </div>
+        <button 
+          class="save-btn right" 
+          *ngIf="selectedAdminId" 
+          (click)="assignTicket(ticket.id)">
+          Save
+        </button>
+      </div>
+    </div>
+    <!-- Admin resolves ticket if status is 2 -->
+    <div class="resolve-wrapper" *ngIf="loggedInUserRole === 'Admin' && ticket.status === 2">
+      <button class="resolve-btn" (click)="resolveTicket(ticket.id)">
+        Resolved
+      </button>
+    </div>
+
+      </div>
+    </ng-container>
+
+    <ng-template #noTickets>
+      <div class="no-data">
+        <p>No tickets found 🚫</p>
+      </div>
+    </ng-template>
 </div>
-<!-- Admin resolves ticket if status is 2 -->
-<div class="resolve-wrapper" *ngIf="loggedInUserRole === 'Admin' && ticket.status === 2">
-  <button class="resolve-btn" (click)="resolveTicket(ticket.id)">
-    Resolved
-  </button>
-</div>
-
-  </div>
-</div>
-
-  <div class="no-data" *ngIf="!loading && tickets.length === 0">
-    <p>No tickets found 🚫</p>
-  </div>
-
-
-  <div class="pagination" *ngIf="totalPages > 1">
+    <div class="pagination" *ngIf="totalPages > 1">
     <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
       ‹
     </button>

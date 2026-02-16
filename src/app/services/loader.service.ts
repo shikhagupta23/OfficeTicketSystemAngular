@@ -11,15 +11,31 @@ export class LoaderService {
 
   loading$ = this.loadingSubject.asObservable();
 
+  // show() {
+  //   this.requestCount++;
+  //   this.loadingSubject.next(true);
+  // }
   show() {
+  setTimeout(() => {
     this.requestCount++;
     this.loadingSubject.next(true);
-  }
+  });
+}
 
-  hide() {
+hide() {
+  setTimeout(() => {
     this.requestCount--;
     if (this.requestCount <= 0) {
       this.loadingSubject.next(false);
-    }
-  }
+    }  
+  });
+}
+
+
+  // hide() {
+  //   this.requestCount--;
+  //   if (this.requestCount <= 0) {
+  //     this.loadingSubject.next(false);
+  //   }
+  // }
 }

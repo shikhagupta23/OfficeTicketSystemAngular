@@ -1,23 +1,23 @@
-<h2 class="page-title">Dashboard</h2>
+<h2 class="page-title">Welcome back, {{ userName }} 👋</h2>
 
 <div class="cards">
   <div class="card total">
     <h3>Total Tickets</h3>
-    <p>{{ stats?.total }}</p>
+    <p>{{ animatedTotal  }}</p>
   </div>
 
   <div class="card open" *ngIf="loggedInUserRole === 'Employee' || loggedInUserRole === 'SuperAdmin'">
     <h3>Open</h3>
-    <p>{{ stats?.open }}</p>
+    <p>{{ animatedOpen }}</p>
   </div>
 
   <div class="card resolved">
     <h3>In Progress</h3>
-    <p>{{ stats?.inProgress }}</p>
+    <p>{{ animatedInProgress }}</p>
   </div>
 
   <div class="card closed">
     <h3>Resolved</h3>
-    <p>{{ stats?.resolved }}</p>
+    <p>{{ animatedResolved }}</p>
   </div>
 </div>

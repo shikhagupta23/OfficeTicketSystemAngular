@@ -67,15 +67,6 @@ export class RaiseTicketComponent {
   loadTickets() {
     this.loading = true;
 
-    // const params: any = {
-    //   page: this.currentPage,
-    //   pageSize: this.pageSize
-    // };
-
-    // if (this.searchText?.trim()) {
-    //   params.search = this.searchText;
-    // }
-
     this.ticketService.getMyTickets(this.currentPage, this.pageSize, this.searchText)
       .subscribe({
       next: (res) => {

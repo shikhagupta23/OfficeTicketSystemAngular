@@ -1,15 +1,34 @@
+import { environment } from "../../environment/environment";
+
+const BASE_URL = environment.baseUrl;
+
 export const API_ENDPOINTS = {
   AUTH: {
-    LOGIN: 'https://officeticketsystemdotnet-production.up.railway.app/api/AuthApi/login'
+    LOGIN: `${BASE_URL}/AuthApi/login`
   },
   TICKET: {
-    RAISE: 'https://officeticketsystemdotnet-production.up.railway.app/api/TicketAPI/raise',
-    MY_TICKETS: 'https://officeticketsystemdotnet-production.up.railway.app/api/TicketAPI',
-    GET_ADMINS: 'https://officeticketsystemdotnet-production.up.railway.app/api/TicketAPI/admins',
-    ASSIGN_TICKET: 'https://officeticketsystemdotnet-production.up.railway.app/api/TicketAPI/assign-ticket',
-    RESOLVE: 'https://officeticketsystemdotnet-production.up.railway.app/api/TicketAPI/resolve'  },
+    RAISE: `${BASE_URL}/TicketAPI/raise`,
+    MY_TICKETS: `${BASE_URL}/TicketAPI`,
+    GET_ADMINS: `${BASE_URL}/TicketAPI/admins`,
+    ASSIGN_TICKET: `${BASE_URL}/TicketAPI/assign-ticket`,
+    RESOLVE: `${BASE_URL}/TicketAPI/resolve`
+  },
 
   DASHBOARD: {
-    STATS: 'https://officeticketsystemdotnet-production.up.railway.app/api/dashboard/stats'
+    STATS: `${BASE_URL}/dashboard/stats`
   }
+
+  // AUTH: {
+  //   LOGIN: `${BASE_URL}/AuthApi/login`
+  // },
+  // TICKET: {
+  //   RAISE: `${BASE_URL}/TicketAPI/raise`,
+  //   MY_TICKETS: `${BASE_URL}/TicketAPI`,
+  //   GET_ADMINS: `${BASE_URL}/TicketAPI/admins`,
+  //   ASSIGN_TICKET: `${BASE_URL}/TicketAPI/assign-ticket`,
+  //   RESOLVE: `${BASE_URL}/TicketAPI/resolve`  },
+
+  // DASHBOARD: {
+  //   STATS: `${BASE_URL}/dashboard/stats`
+  // }
 };

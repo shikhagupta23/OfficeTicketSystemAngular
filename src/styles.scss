@@ -45,3 +45,92 @@ html, body {
 .select2-selection__placeholder {
   color: #98a2b3;
 }
+
+/* =========================
+   NO DATA STATE
+========================= */
+.no-data {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 40px 0;
+  color: #6b7280;
+  font-size: 15px;
+}
+
+/* =========================
+   PAGINATION START
+========================= */
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.pagination button {
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #e5e7eb;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: #4f46e5;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* =========================
+   PAGINATION END
+========================= */
+
+
+/* =========================
+   SEARCH BAR START
+========================= */
+.search-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+/* Compact search */
+.search-bar.compact {
+  width: 260px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .search-wrapper {
+    justify-content: stretch;
+  }
+
+  .search-bar.compact {
+    width: 100%;
+  }
+}
+
+/* =========================
+   SEARCH BAR END
+========================= */

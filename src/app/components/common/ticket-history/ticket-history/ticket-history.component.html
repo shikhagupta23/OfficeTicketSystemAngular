@@ -1,0 +1,82 @@
+<div class="history-wrapper">
+
+  <div class="history-card">
+
+    <div class="history-header">
+      <h2>Ticket History</h2>
+      <span class="total-count">
+        Total: {{ totalCount }}
+      </span>
+    </div>
+      <div class="search-wrapper">
+
+    <div class="search-bar compact">
+      <input
+        type="text"
+        placeholder="Search tickets..."
+        [(ngModel)]="searchText"
+        (input)="onSearch()" />
+    </div>
+    </div>
+
+    <ng-container *ngIf="tickets.length > 0; else noTickets">
+
+    <div 
+      class="ticket-row"
+      *ngFor="let ticket of tickets">
+
+      <!-- Left Section -->
+      <div class="ticket-main">
+        <h3>{{ ticket.title }}</h3>
+        <p>{{ ticket.description }}</p>
+
+        <div class="meta-info">
+          <span><strong>Created By:</strong> {{ ticket.createdByName }}</span>
+          <span><strong>Assigned To:</strong> {{ ticket.assignedToName }}</span>
+          <span><strong>Date:</strong> {{ ticket.createdDate | date:'dd MMM yyyy' }}</span>
+        </div>
+      </div>
+
+      <!-- Right Section -->
+      <div class="ticket-status">
+
+        <span 
+          class="badge status"
+          [ngClass]="getStatusClass(ticket.status)">
+          {{ getStatusText(ticket.status) }}
+        </span>
+
+        <span 
+          class="badge priority"
+          [ngClass]="getPriorityClass(ticket.priority)">
+          {{ getPriorityText(ticket.priority) }}
+        </span>
+
+      </div>
+
+    </div>
+    </ng-container>
+
+    <ng-template #noTickets>
+      <div class="no-data">
+        <p>No tickets found 🚫</p>
+      </div>
+    </ng-template>
+  </div>
+    <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+      ‹
+    </button>
+
+    <button
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      (click)="changePage(i + 1)"
+      [class.active]="currentPage === i + 1">
+      {{ i + 1 }}
+    </button>
+
+    <button (click)="changePage(currentPage + 1)" [disabled]="currentPage === totalPages">
+      ›
+    </button>
+    </div>
+</div>

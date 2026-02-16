@@ -1,0 +1,131 @@
+/* Page Background */
+.history-wrapper {
+  padding: 10px;
+  background: #f4f7fb;
+}
+
+/* Main Container Card */
+.history-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+/* Header */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.history-header h2 {
+  margin: 0;
+  font-weight: 600;
+  color: #1f2d3d;
+}
+
+.total-count {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+/* Ticket Row Card */
+.ticket-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+
+  background: #f9fbff;
+  border: 1px solid #e3eaf3;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover Animation */
+.ticket-row:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 102, 255, 0.15);
+  background: #ffffff;
+}
+
+/* Left Section */
+.ticket-main h3 {
+  margin: 0 0 8px;
+  color: #0d3b66;
+}
+
+.ticket-main p {
+  margin: 0 0 12px;
+  color: #5c6f82;
+  font-size: 14px;
+}
+
+/* Meta Info Grid */
+.meta-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+  font-size: 13px;
+  color: #4a5a6a;
+}
+
+/* Right Section */
+.ticket-status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Badges */
+.badge {
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 500;
+  text-align: center;
+  min-width: 100px;
+}
+
+/* STATUS COLORS */
+.open {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+
+.progress {
+  background: #fff3e0;
+  color: #fb8c00;
+}
+
+.resolved {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.closed {
+  background: #eceff1;
+  color: #546e7a;
+}
+
+/* PRIORITY COLORS */
+.low {
+  background: #e1f5fe;
+  color: #0288d1;
+}
+
+.medium {
+  background: #fff8e1;
+  color: #f9a825;
+}
+
+.high {
+  background: #ffebee;
+  color: #c62828;
+}

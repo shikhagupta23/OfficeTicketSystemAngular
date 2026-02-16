@@ -8,6 +8,7 @@
     <div class="user-info" *ngIf="userName || userRole">
       <span class="username" *ngIf="userName">{{ userName }}</span>
       <span class="role" *ngIf="userRole">{{ userRole }}</span>
+      <span class="date"> {{ today | date:'dd MMM yyyy HH:mm' }} </span>
     </div>
   </div>
 </header>

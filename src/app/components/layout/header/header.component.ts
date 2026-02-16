@@ -15,6 +15,7 @@ export class HeaderComponent {
 
   userName: string | null = null;
   userRole: string | null = null;
+  today = new Date();
 
   ngOnInit() {
     this.userName = this.authService.getUserName();
